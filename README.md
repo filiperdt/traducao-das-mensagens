@@ -1,2 +1,3 @@
 # Tradução das Mensagens
 
+.
