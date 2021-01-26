@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class Mensagem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	@Column(nullable = false)
 	private String titulo;
 	@Column(nullable = false)
