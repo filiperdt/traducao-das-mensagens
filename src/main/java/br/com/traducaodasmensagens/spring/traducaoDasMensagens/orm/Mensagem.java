@@ -14,70 +14,54 @@ public class Mensagem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(nullable = false)
-	private String titulo;
+	private String titulo_br;
 	@Column(nullable = false)
-	private String texto;
-	@Column(nullable = false)
-	private String local;
+	private String titulo_en;
+//	@Column(nullable = false)
+//	private Date data;
 	@Column(nullable = false)
 	private String cidade;
 	@Column(nullable = false)
 	private String estado;
 	@Column(nullable = false)
 	private String pais;
-	@Column(nullable = false)
-	private Date data;
-	@Column(nullable = false)
-	private String periodoDia;
-	@Column(nullable = false)
 	private String grafica;
 	@Column(nullable = false, unique = true)
 	private String identificacao;
 	
 	@Deprecated
 	public Mensagem() {}
-	
-	public Mensagem(String titulo, String texto, String local, String cidade, String estado, String pais, Date data,
-			String periodoDia, String grafica, String identificacao) {
+
+	public Mensagem(String titulo_br, String titulo_en, String cidade, String estado, String pais,
+			String grafica, String identificacao) {
 		super();
-		this.titulo = titulo;
-		this.texto = texto;
-		this.local = local;
+		this.titulo_br = titulo_br;
+		this.titulo_en = titulo_en;
 		this.cidade = cidade;
 		this.estado = estado;
 		this.pais = pais;
-		this.data = data;
-		this.periodoDia = periodoDia;
 		this.grafica = grafica;
 		this.identificacao = identificacao;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public String getTitulo_br() {
+		return titulo_br;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setTitulo_br(String titulo_br) {
+		this.titulo_br = titulo_br;
 	}
 
-	public String getTexto() {
-		return texto;
+	public String getTitulo_en() {
+		return titulo_en;
 	}
 
-	public void setTexto(String texto) {
-		this.texto = texto;
-	}
-
-	public String getLocal() {
-		return local;
-	}
-
-	public void setLocal(String local) {
-		this.local = local;
+	public void setTitulo_en(String titulo_en) {
+		this.titulo_en = titulo_en;
 	}
 
 	public String getCidade() {
@@ -104,22 +88,6 @@ public class Mensagem {
 		this.pais = pais;
 	}
 
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-
-	public String getPeriodoDia() {
-		return periodoDia;
-	}
-
-	public void setPeriodoDia(String periodoDia) {
-		this.periodoDia = periodoDia;
-	}
-
 	public String getGrafica() {
 		return grafica;
 	}
@@ -134,5 +102,12 @@ public class Mensagem {
 
 	public void setIdentificacao(String identificacao) {
 		this.identificacao = identificacao;
+	}
+
+	@Override
+	public String toString() {
+		return "Mensagem [id=" + id + ", titulo_br=" + titulo_br + ", titulo_en=" + titulo_en + ", cidade=" + cidade
+				+ ", estado=" + estado + ", pais=" + pais + ", grafica=" + grafica + ", identificacao=" + identificacao
+				+ "]";
 	}
 }
