@@ -2,9 +2,9 @@ package br.com.traducaodasmensagens.spring.traducaoDasMensagens.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.Mensagem;
+import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.Paragrafo;
 
 @Repository
-public interface MensagemRepository extends CrudRepository<Mensagem, Integer> {
+public interface ParagrafoRepository extends CrudRepository<Paragrafo, Integer> {
 	
 }

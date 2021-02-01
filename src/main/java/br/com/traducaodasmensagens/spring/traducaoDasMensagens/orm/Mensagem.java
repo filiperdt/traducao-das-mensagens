@@ -1,12 +1,14 @@
 package br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm;
 
-import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Mensagem {
@@ -29,11 +31,14 @@ public class Mensagem {
 	@Column(nullable = false, unique = true)
 	private String identificacao;
 	
+	@OneToMany(mappedBy = "mensagem", cascade = CascadeType.ALL)
+	private List<Paragrafo> paragrafos;
+	
 	@Deprecated
 	public Mensagem() {}
 
-	public Mensagem(String titulo_br, String titulo_en, String cidade, String estado, String pais,
-			String grafica, String identificacao) {
+	public Mensagem(String titulo_br, String titulo_en, String cidade, String estado, String pais, String grafica,
+			String identificacao, List<Paragrafo> paragrafos) {
 		super();
 		this.titulo_br = titulo_br;
 		this.titulo_en = titulo_en;
@@ -42,12 +47,13 @@ public class Mensagem {
 		this.pais = pais;
 		this.grafica = grafica;
 		this.identificacao = identificacao;
+		this.paragrafos = paragrafos;
 	}
 
 	public Integer getId() {
 		return id;
 	}
-
+	
 	public String getTitulo_br() {
 		return titulo_br;
 	}
@@ -104,6 +110,14 @@ public class Mensagem {
 		this.identificacao = identificacao;
 	}
 
+	public List<Paragrafo> getParagrafos() {
+		return paragrafos;
+	}
+
+	public void setParagrafos(List<Paragrafo> paragrafos) {
+		this.paragrafos = paragrafos;
+	}
+	
 	@Override
 	public String toString() {
 		return "Mensagem [id=" + id + ", titulo_br=" + titulo_br + ", titulo_en=" + titulo_en + ", cidade=" + cidade
