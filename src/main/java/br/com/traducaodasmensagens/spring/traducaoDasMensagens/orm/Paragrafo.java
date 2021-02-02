@@ -22,7 +22,7 @@ public class Paragrafo {
 //	@Column(nullable = false)
 //	private Time tempo_fim;
 	@ManyToOne
-	@JoinColumn(name = "mensagem_paragrafos", nullable = false)
+	@JoinColumn(name = "mensagem_id", nullable = false)
 	private Mensagem mensagem;
 	
 	@Deprecated

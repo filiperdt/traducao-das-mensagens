@@ -1,6 +1,7 @@
 package br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -34,6 +36,9 @@ public class Mensagem {
 	@OneToMany(mappedBy = "mensagem", cascade = CascadeType.ALL)
 	private List<Paragrafo> paragrafos;
 	
+	@ManyToMany(mappedBy = "mensagens")
+	private Set<Usuario> usuarios;
+	
 	@Deprecated
 	public Mensagem() {}
 
@@ -49,7 +54,7 @@ public class Mensagem {
 		this.identificacao = identificacao;
 		this.paragrafos = paragrafos;
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -117,7 +122,15 @@ public class Mensagem {
 	public void setParagrafos(List<Paragrafo> paragrafos) {
 		this.paragrafos = paragrafos;
 	}
-	
+
+	public Set<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(Set<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
 	@Override
 	public String toString() {
 		return "Mensagem [id=" + id + ", titulo_br=" + titulo_br + ", titulo_en=" + titulo_en + ", cidade=" + cidade
