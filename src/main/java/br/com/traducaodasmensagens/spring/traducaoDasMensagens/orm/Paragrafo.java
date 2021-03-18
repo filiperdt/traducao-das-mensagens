@@ -21,6 +21,7 @@ public class Paragrafo {
 //	private Time tempo_inicio;
 //	@Column(nullable = false)
 //	private Time tempo_fim;
+	
 	@ManyToOne
 	@JoinColumn(name = "mensagem_id", nullable = false)
 	private Mensagem mensagem;
