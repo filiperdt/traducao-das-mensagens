@@ -18,9 +18,9 @@ public class Mensagem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(nullable = false)
-	private String titulo_br;
+	private String tituloBr;
 	@Column(nullable = false)
-	private String titulo_en;
+	private String tituloEn;
 //	@Column(nullable = false)
 //	private Date data;
 	@Column(nullable = false)
@@ -32,6 +32,7 @@ public class Mensagem {
 	private String grafica;
 	@Column(nullable = false, unique = true)
 	private String identificacao;
+	private String horaDoDia;
 	
 	@OneToMany(mappedBy = "mensagem", cascade = CascadeType.ALL)
 	private List<Paragrafo> paragrafos;
@@ -42,16 +43,17 @@ public class Mensagem {
 	@Deprecated
 	public Mensagem() {}
 
-	public Mensagem(String titulo_br, String titulo_en, String cidade, String estado, String pais, String grafica,
-			String identificacao, List<Paragrafo> paragrafos) {
+	public Mensagem(String tituloBr, String tituloEn, String cidade, String estado, String pais, String grafica,
+			String identificacao,  String horaDoDia, List<Paragrafo> paragrafos) {
 		super();
-		this.titulo_br = titulo_br;
-		this.titulo_en = titulo_en;
+		this.tituloBr = tituloBr;
+		this.tituloEn = tituloEn;
 		this.cidade = cidade;
 		this.estado = estado;
 		this.pais = pais;
 		this.grafica = grafica;
 		this.identificacao = identificacao;
+		this.horaDoDia = horaDoDia;
 		this.paragrafos = paragrafos;
 	}
 	
@@ -59,20 +61,20 @@ public class Mensagem {
 		return id;
 	}
 	
-	public String getTitulo_br() {
-		return titulo_br;
+	public String getTituloBr() {
+		return tituloBr;
 	}
 
-	public void setTitulo_br(String titulo_br) {
-		this.titulo_br = titulo_br;
+	public void setTituloBr(String tituloBr) {
+		this.tituloBr = tituloBr;
 	}
 
-	public String getTitulo_en() {
-		return titulo_en;
+	public String getTituloEn() {
+		return tituloEn;
 	}
 
-	public void setTitulo_en(String titulo_en) {
-		this.titulo_en = titulo_en;
+	public void setTituloEn(String tituloEn) {
+		this.tituloEn = tituloEn;
 	}
 
 	public String getCidade() {
@@ -115,6 +117,14 @@ public class Mensagem {
 		this.identificacao = identificacao;
 	}
 
+	public String getHoraDoDia() {
+		return horaDoDia;
+	}
+	
+	public void setHoraDoDia(String horaDoDia) {
+		this.horaDoDia = horaDoDia;
+	}
+	
 	public List<Paragrafo> getParagrafos() {
 		return paragrafos;
 	}
@@ -133,8 +143,8 @@ public class Mensagem {
 
 	@Override
 	public String toString() {
-		return "Mensagem [id=" + id + ", titulo_br=" + titulo_br + ", titulo_en=" + titulo_en + ", cidade=" + cidade
+		return "Mensagem [id=" + id + ", tituloBr=" + tituloBr + ", tituloEn=" + tituloEn + ", cidade=" + cidade
 				+ ", estado=" + estado + ", pais=" + pais + ", grafica=" + grafica + ", identificacao=" + identificacao
-				+ "]";
+				+ ", horaDoDia=" + horaDoDia + "]";
 	}
 }
