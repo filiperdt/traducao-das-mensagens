@@ -10,6 +10,16 @@
 		<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		
+		<style>
+			.legenda{
+				background-color: #D7EBC7;
+			}
+			.abreviacao{
+				display: inline-block;
+				margin-right: 25px;
+			}
+		</style>
+		
 		<title>Listagem - Tradução das Mensagens</title>
 	</head>
 	<body>
@@ -17,8 +27,23 @@
 			<div class="row">
 				<h1>Lista de Mensagens</h1>
 			</div>
-			<div class="row">
-				<h6>Abreviação na Data: M = Manhã | T = Tarde | N = Noite</h6>
+			<div style="display: block; text-align: right;">
+				<a type="button" class="btn btn-primary" href="/mensagem/new">Nova Mensagem</a>
+			</div>
+			<br>
+			<div class="row legenda" style="border-left: blue solid; margin-left: 0px; margin-right: 0px;">
+				<h6><strong>Letras de abreviação na Data:</strong></h6>
+				<div class="col-12">
+					<div class="abreviacao">
+						<h6>M = Manhã</h6>
+					</div>
+					<div class="abreviacao">
+						<h6>T = Tarde</h6>
+					</div>
+					<div class="abreviacao">
+						<h6>N = Noite</h6>
+					</div>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-12">
@@ -36,67 +61,31 @@
 						    </tr>
 						</thead>
 						<tbody>
-						    <tr>
-							    <th class="col-" scope="row">1</th>
-							    <td class="col-1">64-0312M</td>
-							    <td class="col-6"> <!-- Mensagem, cidade, estado e minutos -->
+						    <tr th:each="mensagem : ${mensagens}">
+							    <th scope="row" th:text="${mensagem.id}"></th> 
+							    <td th:text="${mensagem.dataPregacao} + ${#strings.substring(mensagem.periodoDoDia, 0, 1)}"></td>
+							    <td class="col-6">
 							    	<div>
-							    		<strong>Quando seus olhos foram abertos, eles O reconheceram</strong>
+							    		<strong th:text="${mensagem.tituloBr}"></strong>
 						    		</div>
 							    	<div>
-							    		<span>Beaumont TX</span>
-							    		<div style="display: inline-block;" class="col-2"></div>
-							    		<span>81 min</span>
-						    		</div>
-							    </td>
-							    <td class="col-">Crentes da Bíblia do Brasil</td>
-							    <td class="col-"><a href="" title="Ouvir" style="color: inherit"><i class="material-icons" style="font-size:25px" >volume_up</i></a></td>
-							    <td class="col-">Detalhes</td>
-							    <td class="col-">Editar</td>
-							    <td class="col-">Deletar</td>
-						    </tr>
-						    <tr>
-							    <th class="col-" scope="row">2</th>
-							    <td class="col-">64-0312</td>
-							    <td class="col-6"> <!-- Mensagem, cidade, estado e minutos -->
-							    	<div>
-							    		<strong>Quando seus olhos foram abertos, eles O reconheceram</strong>
-						    		</div>
-							    	<div>
-							    		<span>Beaumont TX</span>
-							    		<div style="display: inline-block;" class="col-2"></div>
-							    		<span>81 min</span>
+							    		<div style="display: inline-block;" class="col-5" th:text="${mensagem.cidade} + ' ' + ${mensagem.siglaEstado}"></div>
+							    		<div style="display: inline-block;" class="col-1"></div>
+							    		<div style="display: inline-block;" class="col-2" th:text="${mensagem.diaDaSemana}"></div>
+							    		<div style="display: inline-block;" class="col-1"></div>
+							    		<div style="display: inline-block;" class="col-2" th:text="'81 min'"></div> <!-- ARRUMAR o tempo total do arquivo de áudio -->
 						    		</div>
 							    </td>
-							    <td class="col-">Crentes da Bíblia do Brasil</td>
-							    <td class="col-"><a href="" title="Ouvir" style="color: inherit"><i class="material-icons" style="font-size:25px" >volume_up</i></a></td>
-							    <td class="col-">Detalhes</td>
-							    <td class="col-">Editar</td>
-							    <td class="col-">Deletar</td>
-						    </tr>
-						    <tr>
-							    <th class="col-" scope="row">3</th>
-							    <td class="col-">64-0312</td>
-							    <td class="col-6"> <!-- Mensagem, cidade, estado e minutos -->
-							    	<div>
-							    		<strong>Quando seus olhos foram abertos, eles O reconheceram</strong>
-						    		</div>
-							    	<div>
-							    		<span>Beaumont TX</span>
-							    		<div style="display: inline-block;" class="col-2"></div>
-							    		<span>81 min</span>
-						    		</div>
-							    </td>
-							    <td class="col-">Crentes da Bíblia do Brasil</td>
-							    <td class="col-"><a href="" title="Ouvir" style="color: inherit"><i class="material-icons" style="font-size:25px" >volume_up</i></a></td>
-							    <td class="col-">Detalhes</td>
-							    <td class="col-">Editar</td>
-							    <td class="col-">Deletar</td>
+							    <td th:text="${mensagem.grafica}"></td>
+							    <td><a href="" title="Ouvir" style="color: inherit"><i class="material-icons" style="font-size:25px">volume_up</i></a></td>
+							    <td>Detalhes</td>
+							    <td>Editar</td>
+							    <td>Deletar</td>
 						    </tr>
 						</tbody>
 					</table>
 				</div>
-			</div>	
+			</div>
 		</div>
 		
 		<!-- Option 1: Bootstrap Bundle with Popper -->

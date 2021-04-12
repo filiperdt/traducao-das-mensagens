@@ -1,0 +1,96 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+		
+		<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		
+		<title>Nova Mensagem</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<h1>Nova Mensagem</h1>
+			</div>
+			<br>
+		</div>
+		<div class="container">
+			<div class="row">
+				<form action="/mensagens" method="POST">
+					<div class="mb-3">
+						<label class="form-label">Título em português</label>
+						<input class="form-control" type="text" name="tituloBr">
+						<div></div>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Título em inglês</label>
+						<input class="form-control" type="text" name="tituloEn">
+						<div></div>
+					</div>
+					<div>
+						<div class="mb-3" style="display: inline-block;">
+							<label class="form-label">Data</label>
+							<input class="form-control" type="date" name="dataPregacao">
+							<div></div>
+						</div>
+						<div class="mb-3" style="display: inline-block;">
+							<label class="form-label">Dia da semana</label>
+							<select class="form-select" name="diaDaSemana">
+								<option value="">Selecione...</option>
+								<option th:each="dia : ${diasDaSemana}"
+										th:value="${#strings.capitalize(#strings.toLowerCase(dia))}" th:text="${#strings.capitalize(#strings.toLowerCase(dia))}"></option>
+							</select>
+							<div></div>
+						</div>
+						<div class="mb-3" style="display: inline-block;">
+							<label class="form-label">Período do dia</label>
+							<select class="form-select" name="periodoDoDia">
+								<option value="">Selecione...</option>
+								<option th:each="periodo : ${periodosDoDia}"
+										th:value="${#strings.capitalize(#strings.toLowerCase(periodo))}" th:text="${#strings.capitalize(#strings.toLowerCase(periodo))}"></option>
+							</select>
+							<div></div>
+						</div>
+						<div class="mb-3 col-7" style="display: inline-block;">
+							<label class="form-label">Cidade</label>
+							<input class="form-control" type="text" name="cidade">
+							<div></div>
+						</div>
+						<div class="mb-3 col-2" style="display: inline-block;">
+							<label class="form-label">Estado</label>
+							<input class="form-control" type="text" name="estado">
+							<div></div>
+						</div>
+						<div class="mb-3" style="display: inline-block;">
+							<label class="form-label">Sigla</label>
+							<input class="form-control" type="text" name="siglaEstado">
+							<div></div>
+						</div>
+						<div class="mb-3" style="display: inline-block;">
+							<label class="form-label">País</label>
+							<input class="form-control" type="text" name="pais" value="EUA">
+							<div></div>
+						</div>
+						<div class="mb-3" style="display: inline-block;">
+							<label class="form-label">Gráfica</label>
+							<input class="form-control" type="text" name="grafica">
+							<div></div>
+						</div>
+					</div>
+					
+					<a type="button" class="btn btn-primary" href="javascript:history.back()">Voltar</a>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+			<br>
+		</div>
+		
+		<!-- Option 1: Bootstrap Bundle with Popper -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>		
+	</body>
+</html>

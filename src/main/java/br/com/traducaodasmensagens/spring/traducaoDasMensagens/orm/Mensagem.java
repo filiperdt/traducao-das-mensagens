@@ -1,5 +1,6 @@
 package br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -21,18 +22,19 @@ public class Mensagem {
 	private String tituloBr;
 	@Column(nullable = false)
 	private String tituloEn;
-//	@Column(nullable = false)
-//	private Date data;
+	@Column(nullable = false)
+	private LocalDate dataPregacao;
 	@Column(nullable = false)
 	private String cidade;
 	@Column(nullable = false)
 	private String estado;
 	@Column(nullable = false)
+	private String siglaEstado;
+	@Column(nullable = false)
 	private String pais;
 	private String grafica;
-	@Column(nullable = false, unique = true)
-	private String identificacao;
-	private String horaDoDia;
+	private String periodoDoDia;
+	private String diaDaSemana;
 	
 	@OneToMany(mappedBy = "mensagem", cascade = CascadeType.ALL)
 	private List<Paragrafo> paragrafos;
@@ -42,21 +44,25 @@ public class Mensagem {
 	
 	@Deprecated
 	public Mensagem() {}
-
-	public Mensagem(String tituloBr, String tituloEn, String cidade, String estado, String pais, String grafica,
-			String identificacao,  String horaDoDia, List<Paragrafo> paragrafos) {
+	
+	public Mensagem(String tituloBr, String tituloEn, LocalDate dataPregacao, String cidade, String estado,
+			String siglaEstado, String pais, String grafica, String periodoDoDia, String diaDaSemana,
+			List<Paragrafo> paragrafos, Set<Usuario> usuarios) {
 		super();
 		this.tituloBr = tituloBr;
 		this.tituloEn = tituloEn;
+		this.dataPregacao = dataPregacao;
 		this.cidade = cidade;
 		this.estado = estado;
+		this.siglaEstado = siglaEstado;
 		this.pais = pais;
 		this.grafica = grafica;
-		this.identificacao = identificacao;
-		this.horaDoDia = horaDoDia;
+		this.periodoDoDia = periodoDoDia;
+		this.diaDaSemana = diaDaSemana;
 		this.paragrafos = paragrafos;
+		this.usuarios = usuarios;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -64,7 +70,6 @@ public class Mensagem {
 	public String getTituloBr() {
 		return tituloBr;
 	}
-
 	public void setTituloBr(String tituloBr) {
 		this.tituloBr = tituloBr;
 	}
@@ -72,15 +77,21 @@ public class Mensagem {
 	public String getTituloEn() {
 		return tituloEn;
 	}
-
 	public void setTituloEn(String tituloEn) {
 		this.tituloEn = tituloEn;
+	}
+	
+	public LocalDate getDataPregacao() {
+		return dataPregacao;
+	}
+	
+	public void setDataPregacao(LocalDate dataPregacao) {
+		this.dataPregacao = dataPregacao;
 	}
 
 	public String getCidade() {
 		return cidade;
 	}
-
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
@@ -88,15 +99,20 @@ public class Mensagem {
 	public String getEstado() {
 		return estado;
 	}
-
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-
+	public String getSiglaEstado() {
+		return siglaEstado;
+	}
+	
+	public void setSiglaEstado(String siglaEstado) {
+		this.siglaEstado = siglaEstado;
+	}
+	
 	public String getPais() {
 		return pais;
 	}
-
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
@@ -104,31 +120,27 @@ public class Mensagem {
 	public String getGrafica() {
 		return grafica;
 	}
-
 	public void setGrafica(String grafica) {
 		this.grafica = grafica;
 	}
 
-	public String getIdentificacao() {
-		return identificacao;
+	public String getPeriodoDoDia() {
+		return periodoDoDia;
+	}
+	public void setPeriodoDoDia(String periodoDoDia) {
+		this.periodoDoDia = periodoDoDia;
 	}
 
-	public void setIdentificacao(String identificacao) {
-		this.identificacao = identificacao;
+	public String getDiaDaSemana() {
+		return diaDaSemana;
+	}
+	public void setDiaDaSemana(String diaDaSemana) {
+		this.diaDaSemana = diaDaSemana;
 	}
 
-	public String getHoraDoDia() {
-		return horaDoDia;
-	}
-	
-	public void setHoraDoDia(String horaDoDia) {
-		this.horaDoDia = horaDoDia;
-	}
-	
 	public List<Paragrafo> getParagrafos() {
 		return paragrafos;
 	}
-
 	public void setParagrafos(List<Paragrafo> paragrafos) {
 		this.paragrafos = paragrafos;
 	}
@@ -136,15 +148,15 @@ public class Mensagem {
 	public Set<Usuario> getUsuarios() {
 		return usuarios;
 	}
-
 	public void setUsuarios(Set<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
 
 	@Override
 	public String toString() {
-		return "Mensagem [id=" + id + ", tituloBr=" + tituloBr + ", tituloEn=" + tituloEn + ", cidade=" + cidade
-				+ ", estado=" + estado + ", pais=" + pais + ", grafica=" + grafica + ", identificacao=" + identificacao
-				+ ", horaDoDia=" + horaDoDia + "]";
+		return "Mensagem [id=" + id + ", tituloBr=" + tituloBr + ", tituloEn=" + tituloEn 
+				+ ", dataPregacao=" + dataPregacao + ", cidade=" + cidade + ", estado=" + estado + ", pais=" 
+				+ pais + ", grafica=" + grafica + ", periodoDoDia=" + periodoDoDia 
+				+ ", diaDaSemana=" + diaDaSemana + "]";
 	}
 }
