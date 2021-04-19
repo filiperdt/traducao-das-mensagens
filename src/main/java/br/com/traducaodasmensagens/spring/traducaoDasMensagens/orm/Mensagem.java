@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,8 +35,10 @@ public class Mensagem {
 	@Column(nullable = false)
 	private String pais;
 	private String grafica;
-	private String periodoDoDia;
-	private String diaDaSemana;
+	@Enumerated(EnumType.STRING)
+	private PeriodoDoDia periodoDoDia;
+	@Enumerated(EnumType.STRING)
+	private DiaDaSemana diaDaSemana;
 	
 	@OneToMany(mappedBy = "mensagem", cascade = CascadeType.ALL)
 	private List<Paragrafo> paragrafos;
@@ -46,7 +50,7 @@ public class Mensagem {
 	public Mensagem() {}
 	
 	public Mensagem(String tituloBr, String tituloEn, LocalDate dataPregacao, String cidade, String estado,
-			String siglaEstado, String pais, String grafica, String periodoDoDia, String diaDaSemana,
+			String siglaEstado, String pais, String grafica, PeriodoDoDia periodoDoDia, DiaDaSemana diaDaSemana,
 			List<Paragrafo> paragrafos, Set<Usuario> usuarios) {
 		super();
 		this.tituloBr = tituloBr;
@@ -123,18 +127,18 @@ public class Mensagem {
 	public void setGrafica(String grafica) {
 		this.grafica = grafica;
 	}
-
-	public String getPeriodoDoDia() {
+	
+	public PeriodoDoDia getPeriodoDoDia() {
 		return periodoDoDia;
 	}
-	public void setPeriodoDoDia(String periodoDoDia) {
+	public void setPeriodoDoDia(PeriodoDoDia periodoDoDia) {
 		this.periodoDoDia = periodoDoDia;
 	}
 
-	public String getDiaDaSemana() {
+	public DiaDaSemana getDiaDaSemana() {
 		return diaDaSemana;
 	}
-	public void setDiaDaSemana(String diaDaSemana) {
+	public void setDiaDaSemana(DiaDaSemana diaDaSemana) {
 		this.diaDaSemana = diaDaSemana;
 	}
 

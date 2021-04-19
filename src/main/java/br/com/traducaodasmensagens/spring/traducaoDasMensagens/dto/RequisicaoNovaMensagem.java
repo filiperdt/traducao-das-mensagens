@@ -4,7 +4,9 @@ import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.DiaDaSemana;
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.Mensagem;
+import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.PeriodoDoDia;
 
 // Classe DTO (Data Transfer Object)
 public class RequisicaoNovaMensagem {
@@ -17,8 +19,8 @@ public class RequisicaoNovaMensagem {
 	private String siglaEstado;
 	private String pais;
 	private String grafica;
-	private String periodoDoDia;
-	private String diaDaSemana;
+	private PeriodoDoDia periodoDoDia;
+	private DiaDaSemana diaDaSemana;
 	
 	public String getTituloBr() {
 		return tituloBr;
@@ -76,20 +78,20 @@ public class RequisicaoNovaMensagem {
 		this.grafica = grafica;
 	}
 	
-	public String getPeriodoDoDia() {
+	public PeriodoDoDia getPeriodoDoDia() {
 		return periodoDoDia;
 	}
-	public void setPeriodoDoDia(String periodoDoDia) {
+	public void setPeriodoDoDia(PeriodoDoDia periodoDoDia) {
 		this.periodoDoDia = periodoDoDia;
 	}
 	
-	public String getDiaDaSemana() {
+	public DiaDaSemana getDiaDaSemana() {
 		return diaDaSemana;
 	}
-	public void setDiaDaSemana(String diaDaSemana) {
+	public void setDiaDaSemana(DiaDaSemana diaDaSemana) {
 		this.diaDaSemana = diaDaSemana;
 	}
-		
+	
 	public Mensagem toMensagem() {
 		Mensagem mensagem = new Mensagem();
 		mensagem.setTituloBr(this.tituloBr);

@@ -43,7 +43,7 @@
 							<select class="form-select" name="diaDaSemana">
 								<option value="">Selecione...</option>
 								<option th:each="dia : ${diasDaSemana}"
-										th:value="${#strings.capitalize(#strings.toLowerCase(dia))}" th:text="${#strings.capitalize(#strings.toLowerCase(dia))}"></option>
+										th:value="${#strings.toUpperCase(dia)}" th:text="${dia}"></option>
 							</select>
 							<div></div>
 						</div>
@@ -52,7 +52,7 @@
 							<select class="form-select" name="periodoDoDia">
 								<option value="">Selecione...</option>
 								<option th:each="periodo : ${periodosDoDia}"
-										th:value="${#strings.capitalize(#strings.toLowerCase(periodo))}" th:text="${#strings.capitalize(#strings.toLowerCase(periodo))}"></option>
+										th:value="${#strings.toUpperCase(periodo)}" th:text="${periodo}"></option>
 							</select>
 							<div></div>
 						</div>
