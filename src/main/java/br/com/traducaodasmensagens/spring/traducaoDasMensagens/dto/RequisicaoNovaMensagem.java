@@ -16,11 +16,11 @@ import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.PeriodoDoDia;
 public class RequisicaoNovaMensagem {
 	@NotBlank
 	@NotNull
-	private String tituloBr;
+	private String tituloBr; // Em caso de erro, NotBlank.requisicaoNovaMensagem.tituloBr   > Utiliza-lo em resources/messages.properties
 	@NotBlank
 	@NotNull
 	private String tituloEn;
-	@Past
+	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataPregacao;
 	@NotBlank

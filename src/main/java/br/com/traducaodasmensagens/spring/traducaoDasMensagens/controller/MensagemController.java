@@ -45,14 +45,8 @@ public class MensagemController {
 		}
 	}
 	
-	@ModelAttribute(value = "requisicaoNovaMensagem")
-	public RequisicaoNovaMensagem getRequisicaoNovaMensagem()
-	{
-		return new RequisicaoNovaMensagem();
-	}
-	
 	@GetMapping("/mensagens/new")
-	public ModelAndView nnew() {
+	public ModelAndView nnew(RequisicaoNovaMensagem requisicao) {
 		ModelAndView mv = new ModelAndView("mensagens/novo");
 		mv.addObject("diasDaSemana", DiaDaSemana.values());
 		mv.addObject("periodosDoDia", PeriodoDoDia.values());
