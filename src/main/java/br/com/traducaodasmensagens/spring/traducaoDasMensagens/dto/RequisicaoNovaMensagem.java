@@ -2,6 +2,10 @@ package br.com.traducaodasmensagens.spring.traducaoDasMensagens.dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.DiaDaSemana;
@@ -10,13 +14,26 @@ import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.PeriodoDoDia;
 
 // Classe DTO (Data Transfer Object)
 public class RequisicaoNovaMensagem {
+	@NotBlank
+	@NotNull
 	private String tituloBr;
+	@NotBlank
+	@NotNull
 	private String tituloEn;
+	@Past
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataPregacao;
+	@NotBlank
+	@NotNull
 	private String cidade;
+	@NotBlank
+	@NotNull
 	private String estado;
+	@NotBlank
+	@NotNull
 	private String siglaEstado;
+	@NotBlank
+	@NotNull
 	private String pais;
 	private String grafica;
 	private PeriodoDoDia periodoDoDia;
