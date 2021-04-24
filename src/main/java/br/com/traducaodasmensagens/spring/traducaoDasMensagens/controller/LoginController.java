@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class IndexController {
+public class LoginController {
 	
-	@GetMapping("/")
-	public ModelAndView index() {
-		ModelAndView mv = new ModelAndView("index");
+	@GetMapping("/mensagens/login")
+	public ModelAndView login() {
+		ModelAndView mv = new ModelAndView("login");
 		return mv;
 	}
 }

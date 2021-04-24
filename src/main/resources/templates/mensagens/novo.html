@@ -1,24 +1,8 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<!-- Bootstrap CSS -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-		
-		<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		
-		<title>Nova Mensagem</title>
-	</head>
+	<head th:replace="~{fragmentos :: head('Nova Mensagem')}"></head>
 	<body>
-		<div class="container">
-			<div class="row">
-				<h1>Nova Mensagem</h1>
-			</div>
-			<br>
-		</div>
+		<header th:replace="~{fragmentos :: header('Nova Mensagem')}"></header>
 		<div class="container">
 			<div class="row">
 				<form th:object="${requisicaoNovaMensagem}" th:action="@{/mensagens}" method="POST">
