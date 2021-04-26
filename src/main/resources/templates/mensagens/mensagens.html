@@ -76,9 +76,9 @@
 							    </td>
 							    <td th:text="${mensagem.grafica}"></td>
 							    <td><a href="" title="Ouvir" style="color: inherit"><i class="material-icons" style="font-size:25px">volume_up</i></a></td>
-							    <td>Detalhes</td>
-							    <td>Editar</td>
-							    <td>Deletar</td>
+							    <td><a th:href="@{/mensagens/{mensagemId}(mensagemId = ${mensagem.id})}">Detalhes</a></td>
+							    <td><a href="#">Editar</a></td>
+							    <td><a href="#">Deletar</a></td>
 						    </tr>
 						</tbody>
 					</table>

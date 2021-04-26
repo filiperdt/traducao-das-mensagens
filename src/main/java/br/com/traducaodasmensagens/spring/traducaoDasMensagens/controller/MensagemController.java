@@ -1,6 +1,7 @@
 package br.com.traducaodasmensagens.spring.traducaoDasMensagens.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,9 +40,10 @@ public class MensagemController {
 			mv.addObject("periodosDoDia", PeriodoDoDia.values());
 			return mv;
 		} else {
-			mensagemRepository.save(requisicao.toMensagem());
+			Mensagem mensagem = requisicao.toMensagem();
+			mensagemRepository.save(mensagem);
 			
-			return new ModelAndView("redirect:/mensagens");
+			return new ModelAndView("redirect:/mensagens/" + mensagem.getId());
 		}
 	}
 	
@@ -51,5 +53,21 @@ public class MensagemController {
 		mv.addObject("diasDaSemana", DiaDaSemana.values());
 		mv.addObject("periodosDoDia", PeriodoDoDia.values());
 		return mv;
+	}
+	
+	@GetMapping("/mensagens/{id}")
+	public ModelAndView show(@PathVariable Integer id) {
+		Optional<Mensagem> optional = mensagemRepository.findById(id);
+		
+		if(optional.isPresent()) {
+			Mensagem mensagem = optional.get();
+			
+			ModelAndView mv = new ModelAndView("mensagens/show");
+			mv.addObject("mensagem", mensagem);
+			
+			return mv;
+		} else {
+			return new ModelAndView("redirect:/mensagens");
+		}
 	}
 }
