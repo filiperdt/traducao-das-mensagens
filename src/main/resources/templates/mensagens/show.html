@@ -16,13 +16,14 @@
 						<strong>Sigla do estado:</strong> <span th:text="${mensagem.siglaEstado}"></span><br>
 						<strong>País:</strong> <span th:text="${mensagem.pais}"></span><br>
 						<strong>Gráfica:</strong> <span th:text="${mensagem.grafica}"></span><br>
-						<strong>Período do dia:</strong> <span th:text="${mensagem.periodoDoDia.toString()}"></span><br>
-						<strong>Dia da semana:</strong> <span th:text="${mensagem.diaDaSemana.toString()}"></span><br><br>
+						<strong>Dia da semana:</strong> <span th:text="${mensagem.diaDaSemana.toString()}"></span><br>
+						<strong>Período do dia:</strong> <span th:text="${mensagem.periodoDoDia.toString()}"></span><br><br>
 					</div>
 				</div>
 				<div class="row">
 					<div>
-						<a type="button" class="btn btn-primary" href="#">Editar</a> <a type="button" class="btn btn-primary" href="/mensagens">Voltar</a>
+						<a type="button" class="btn btn-primary" href="/mensagens">Voltar</a> 
+						<a type="button" class="btn btn-primary" th:href="@{/mensagens/{mensagemId}/edit(mensagemId = ${mensagem.id})}">Editar</a>
 					</div> 
 				</div>
 			</div>

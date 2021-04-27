@@ -13,7 +13,7 @@ import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.Mensagem;
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.PeriodoDoDia;
 
 // Classe DTO (Data Transfer Object)
-public class RequisicaoNovaMensagem {
+public class RequisicaoFormMensagem {
 	@NotBlank
 	@NotNull
 	private String tituloBr; // Em caso de erro, NotBlank.requisicaoNovaMensagem.tituloBr   > Utiliza-lo em resources/messages.properties
@@ -123,6 +123,34 @@ public class RequisicaoNovaMensagem {
 		mensagem.setDiaDaSemana(this.diaDaSemana);
 		
 		return mensagem;
+	}
+	
+	public Mensagem toMensagem(Mensagem mensagem) {
+		mensagem.setTituloBr(this.tituloBr);
+		mensagem.setTituloEn(this.tituloEn);
+		mensagem.setDataPregacao(this.dataPregacao);
+		mensagem.setCidade(this.cidade);
+		mensagem.setEstado(this.estado);
+		mensagem.setSiglaEstado(this.siglaEstado);
+		mensagem.setPais(this.pais);
+		mensagem.setGrafica(this.grafica);
+		mensagem.setPeriodoDoDia(this.periodoDoDia);
+		mensagem.setDiaDaSemana(this.diaDaSemana);
+		
+		return mensagem;
+	}
+	
+	public void fromMensagem(Mensagem mensagem) {
+		this.tituloBr = mensagem.getTituloBr();
+		this.tituloEn = mensagem.getTituloEn();
+		this.dataPregacao = mensagem.getDataPregacao();
+		this.cidade = mensagem.getCidade();
+		this.estado = mensagem.getEstado();
+		this.siglaEstado = mensagem.getSiglaEstado();
+		this.pais = mensagem.getPais();
+		this.grafica = mensagem.getGrafica();
+		this.periodoDoDia = mensagem.getPeriodoDoDia();
+		this.diaDaSemana = mensagem.getDiaDaSemana();
 	}
 	
 	@Override

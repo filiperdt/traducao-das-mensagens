@@ -18,7 +18,7 @@
 			</li>
 			<li class="nav-item">
 				<a class="nav-link"
-				th:classappend="${#httpServletRequest.getRequestURI().equals('/mensagens') ? 'active' : ''}"
+				th:classappend="${#httpServletRequest.getRequestURI().startsWith('/mensagens') ? 'active' : ''}"
 				href="/mensagens">Mensagens</a>
 			</li>
 			<li class="nav-item">

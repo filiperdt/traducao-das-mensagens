@@ -1,11 +1,11 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="~{fragmentos :: head('Nova')}"></head>
+	<head th:replace="~{fragmentos :: head('Editar')}"></head>
 	<body>
-		<header th:replace="~{fragmentos :: header('Nova Mensagem')}"></header>
+		<header th:replace="~{fragmentos :: header('Editar Mensagem #' + ${mensagemId})}"></header>
 		<div class="container">
 			<div class="row">
-				<form th:object="${requisicaoFormMensagem}" th:action="@{/mensagens}" method="POST">
+				<form th:object="${requisicaoFormMensagem}" th:action="@{/mensagens/{mensagemId}(mensagemId = ${mensagemId})}" method="POST">
 					<div class="mb-3">
 						<label class="form-label">Título em português</label>
 						<input class="form-control" th:errorclass="is-invalid" type="text" th:field="*{tituloBr}">
@@ -69,7 +69,7 @@
 						</div>
 					</div>
 					
-					<a type="button" class="btn btn-primary" href="/mensagens">Voltar</a>
+					<a type="button" class="btn btn-primary" href="javascript:history.back()">Voltar</a>
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 			</div>

@@ -18,6 +18,9 @@
 				display: inline-block;
 				margin-right: 25px;
 			}
+			a:link{
+				text-decoration: none;
+			}
 		</style>
 		
 		<title>Listagem - Tradução das Mensagens</title>
@@ -77,7 +80,7 @@
 							    <td th:text="${mensagem.grafica}"></td>
 							    <td><a href="" title="Ouvir" style="color: inherit"><i class="material-icons" style="font-size:25px">volume_up</i></a></td>
 							    <td><a th:href="@{/mensagens/{mensagemId}(mensagemId = ${mensagem.id})}">Detalhes</a></td>
-							    <td><a href="#">Editar</a></td>
+							    <td><a th:href="@{/mensagens/{mensagemId}/edit(mensagemId = ${mensagem.id})}">Editar</a></td>
 							    <td><a href="#">Deletar</a></td>
 						    </tr>
 						</tbody>
