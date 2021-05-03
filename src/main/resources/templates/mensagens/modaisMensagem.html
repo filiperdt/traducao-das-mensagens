@@ -1,0 +1,21 @@
+<div th:fragment="delete" class="modal fade" th:id="staticBackdrop+${mensagem.id}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="staticBackdropLabel">Excluir Registro</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<h5>Deseja excluir a Mensagem #<span th:text="${mensagem.id}"></span>?</h5><br>
+				<h7><strong>Título português:</strong></h7><br>
+				<h7><span th:text="${mensagem.tituloBr}"></span></h7><br><br>
+				<h7><strong>Data:</strong></h7><br>
+				<h7><span th:text="${mensagem.dataPregacao} + ${#strings.substring(mensagem.periodoDoDia, 0, 1)}"></span></h7>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+				<a th:href="@{/mensagens/{mensagemId}/delete(mensagemId=${mensagem.id})}" class="btn btn-danger">Sim</a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -81,7 +81,10 @@
 							    <td><a href="" title="Ouvir" style="color: inherit"><i class="material-icons" style="font-size:25px">volume_up</i></a></td>
 							    <td><a th:href="@{/mensagens/{mensagemId}(mensagemId = ${mensagem.id})}">Detalhes</a></td>
 							    <td><a th:href="@{/mensagens/{mensagemId}/edit(mensagemId = ${mensagem.id})}">Editar</a></td>
-							    <td><a href="#">Deletar</a></td>
+							    <td>
+									<a href="#" data-bs-toggle="modal" th:attr="data-bs-target='#staticBackdrop'+${mensagem.id}">Deletar</a>
+									<div th:replace="~{mensagens/modaisMensagem :: delete}"></div>
+								</td>
 						    </tr>
 						</tbody>
 					</table>

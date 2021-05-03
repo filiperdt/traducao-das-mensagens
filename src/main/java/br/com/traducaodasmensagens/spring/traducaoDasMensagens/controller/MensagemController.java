@@ -113,4 +113,15 @@ public class MensagemController {
 			}
 		}
 	}
+	
+	@GetMapping("/{id}/delete")
+	public String delete(@PathVariable Integer id) {
+		Optional<Mensagem> optional = mensagemRepository.findById(id);
+		
+		if(optional.isPresent()) {
+			mensagemRepository.deleteById(id);
+		}
+		
+		return "redirect:/mensagens";
+	}
 }
