@@ -6,6 +6,7 @@
 		
 		<!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+		<link rel="stylesheet" href="/mensagens/css/style.css">
 		
 		<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -27,6 +28,15 @@
 	</head>
 	<body>
 		<header th:replace="~{fragmentos :: header('Lista de Mensagens')}"></header>
+		
+		<div class="container erro-mensagem">
+			<div class="col-12">
+				<span th:styleappend="${param.error == null || param.mensagem == null ? 'display: none' : ''}"
+					  th:classappend="${param.error != null && param.error ? 'erro-mensagem' : 'sucesso-mensagem'}"
+					  th:text="${param.mensagem != null ? param.mensagem : ''}"></span>
+			</div>
+		</div>
+		
 		<div class="container">
 			<div style="display: block; text-align: right;">
 				<a type="button" class="btn btn-primary" href="/mensagens/new">Nova Mensagem</a>

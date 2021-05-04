@@ -45,7 +45,10 @@ public class MensagemController {
 			Mensagem mensagem = requisicao.toMensagem();
 			mensagemRepository.save(mensagem);
 			
-			return new ModelAndView("redirect:/mensagens/" + mensagem.getId());
+			ModelAndView mv = new ModelAndView("redirect:/mensagens/" + mensagem.getId());
+			mv.addObject("novo", true);
+			
+			return mv;
 		}
 	}
 	
@@ -69,7 +72,8 @@ public class MensagemController {
 			
 			return mv;
 		} else {
-			return new ModelAndView("redirect:/mensagens");
+			ModelAndView mv = new ModelAndView("redirect:/mensagens");
+			return this.retornaErroMensagem(mv, "Erro na exibição de detalhes. Mensagem #" + id + " não encontrada no banco!", true);
 		}
 	}
 	
@@ -88,7 +92,8 @@ public class MensagemController {
 			
 			return mv;
 		} else {
-			return new ModelAndView("redirect:/mensagens");
+			ModelAndView mv = new ModelAndView("redirect:/mensagens");
+			return this.retornaErroMensagem(mv, "Erro na atualização. Mensagem #" + id + " não encontrada no banco!", true);
 		}
 	}
 	
@@ -109,19 +114,30 @@ public class MensagemController {
 				
 				return new ModelAndView("redirect:/mensagens/" + mensagem.getId());
 			} else {
-				return new ModelAndView("redirect:/mensagens");
+				ModelAndView mv = new ModelAndView("redirect:/mensagens");
+				return this.retornaErroMensagem(mv, "Erro na atualização. Mensagem #" + id + " não encontrada no banco!", true);
 			}
 		}
 	}
 	
 	@GetMapping("/{id}/delete")
-	public String delete(@PathVariable Integer id) {
+	public ModelAndView delete(@PathVariable Integer id) {
 		Optional<Mensagem> optional = mensagemRepository.findById(id);
+		
+		ModelAndView mv = new ModelAndView("redirect:/mensagens");
 		
 		if(optional.isPresent()) {
 			mensagemRepository.deleteById(id);
+			return this.retornaErroMensagem(mv, "Mensagem #" + id + " deletada com sucesso!", false);
+		} else {
+			return this.retornaErroMensagem(mv, "Erro na exclusão. Mensagem #" + id + " não encontrada no banco!", true);
 		}
+	}
+	
+	private ModelAndView retornaErroMensagem(ModelAndView mv, String msg, boolean result) {
+		mv.addObject("mensagem", msg);
+		mv.addObject("error", result);
 		
-		return "redirect:/mensagens";
+		return mv;
 	}
 }

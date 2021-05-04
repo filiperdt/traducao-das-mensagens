@@ -21,10 +21,11 @@
 					</div>
 				</div>
 				<div class="row">
-					<div>
+					<div style="display: inline-block;">
 						<a type="button" class="btn btn-primary" href="/mensagens">Voltar</a> 
 						<a type="button" class="btn btn-primary" th:href="@{/mensagens/{mensagemId}/edit(mensagemId = ${mensagem.id})}">Editar</a>
-					</div> 
+						<a th:styleappend="${param.novo == null ? 'display: none;' : ''}" type="button" class="btn btn-secondary" style="margin-left: 25px;" href="/mensagens/new">Nova Mensagem</a>
+					</div>
 				</div>
 			</div>
 		</main>
