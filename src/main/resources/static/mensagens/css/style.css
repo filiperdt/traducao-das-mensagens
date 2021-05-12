@@ -1,5 +1,18 @@
 @charset "ISO-8859-1";
 
+.legenda{
+	background-color: #D7EBC7;
+}
+
+.abreviacao{
+	display: inline-block;
+	margin-right: 25px;
+}
+
+a:link{
+	text-decoration: none;
+}
+
 .sucesso-mensagem{
 	color: #198754;
 }

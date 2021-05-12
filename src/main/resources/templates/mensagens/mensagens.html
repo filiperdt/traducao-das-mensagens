@@ -1,33 +1,8 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<!-- Bootstrap CSS -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-		<link rel="stylesheet" href="/mensagens/css/style.css">
-		
-		<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		
-		<style>
-			.legenda{
-				background-color: #D7EBC7;
-			}
-			.abreviacao{
-				display: inline-block;
-				margin-right: 25px;
-			}
-			a:link{
-				text-decoration: none;
-			}
-		</style>
-		
-		<title>Listagem - Tradução das Mensagens</title>
-	</head>
+	<head th:replace="~{fragmentos :: headListagem('Listagem de Mensagens')}"></head>
 	<body>
-		<header th:replace="~{fragmentos :: header('Lista de Mensagens')}"></header>
+		<header th:replace="~{fragmentos :: header('Listagem de Mensagens')}"></header>
 		
 		<div class="container erro-mensagem">
 			<div class="col-12">
@@ -61,7 +36,7 @@
 					<table class="table table-striped align-middle">
 						<thead>
 						    <tr>
-							    <th scope="col"></th>
+							    <th scope="col">#</th>
 							    <th scope="col"><a href="" title="Ordenar" style="color: inherit; text-decoration: none">Data <i class="fa fa-sort" aria-hidden="true"></i></a></th>
 							    <th scope="col"><a href="" title="Ordenar" style="color: inherit; text-decoration: none">Mensagem <i class="fa fa-sort" aria-hidden="true"></i></a></th>
 							    <th scope="col"><a href="" title="Ordenar" style="color: inherit; text-decoration: none">Gráfica <i class="fa fa-sort" aria-hidden="true"></i></a></th>

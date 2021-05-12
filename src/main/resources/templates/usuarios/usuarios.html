@@ -1,16 +1,47 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<!-- Bootstrap CSS -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-		
-		<title>Lista de Usuários</title>
-	</head>
+	<head th:replace="~{fragmentos :: headListagem('Listagem de Usuários')}"></head>
 	<body>
-		<h1>Lista de Usuários</h1>
+		<header th:replace="~{fragmentos :: header('Listagem de Usuários')}"></header>
+		
+		<div class="container">
+			<div style="display: block; text-align: right;">
+				<a type="button" class="btn btn-primary" href="/usuarios/new">Novo Usuário</a>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-12">
+					<table class="table table-striped align-middle">
+						<thead>
+						    <tr>
+							    <th scope="col">#</th>
+							    <th scope="col"><a href="" title="Ordenar" style="color: inherit; text-decoration: none">Id <i class="fa fa-sort" aria-hidden="true"></i></a></th>
+							    <th scope="col"><a href="" title="Ordenar" style="color: inherit; text-decoration: none">Login <i class="fa fa-sort" aria-hidden="true"></i></a></th>
+							    <th scope="col"><a href="" title="Ordenar" style="color: inherit; text-decoration: none">Nome <i class="fa fa-sort" aria-hidden="true"></i></a></th>
+							    <th scope="col"></th>
+							    <th scope="col"></th>
+							    <th scope="col"></th>
+						    </tr>
+						</thead>
+						<tbody>
+						    <tr th:each="usuario : ${usuarios}">
+							    <th scope="row">1</th>
+							    <td th:text="${usuario.id}"></td> 
+							    <td class="col-3" th:text="${usuario.login}"></td>
+							    <td class="col-5" th:text="${usuario.nome}"></td>
+							    <td><a th:href="@{/usuarios/{usuarioId}(usuarioId = ${usuario.id})}">Detalhes</a></td>
+							    <td><a th:href="@{/usuarios/{usuarioId}/edit(usuarioId = ${usuario.id})}">Editar</a></td>
+							    <td>
+									Deletar
+									<!-- <a href="#" data-bs-toggle="modal" th:attr="data-bs-target='#staticBackdrop'+${usuario.id}">Deletar</a>
+									<div th:replace="~{usuarios/modaisUsuario :: delete}"></div> -->
+								</td>
+						    </tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 		
 		<!-- Option 1: Bootstrap Bundle with Popper -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>		
