@@ -11,13 +11,13 @@
 				<input class="form-control" th:errorclass="is-invalid" type="text" th:field="*{tituloEn}">
 				<div class="invalid-feedback" th:errors="*{tituloEn}"></div>
 			</div>
-			<div>
+			<div class="mb-3">
 				<div class="mb-3" style="display: inline-block;">
 					<label class="form-label">Data</label>
 					<input class="form-control" th:errorclass="is-invalid" type="date" th:field="*{dataPregacao}">
 					<div class="invalid-feedback" th:errors="*{dataPregacao}"></div>
 				</div>
-				<div class="mb-3" style="display: inline-block;">
+				<div style="display: inline-block;">
 					<label class="form-label">Dia da semana</label>
 					<select class="form-select" th:errorclass="is-invalid" th:field="*{diaDaSemana}">
 						<option value="">Selecione...</option>
@@ -27,7 +27,7 @@
 					</select>
 					<div class="invalid-feedback">Escolha um dia válido.</div>
 				</div>
-				<div class="mb-3" style="display: inline-block;">
+				<div style="display: inline-block;">
 					<label class="form-label">Período do dia</label>
 					<select class="form-select" th:errorclass="is-invalid" th:field="*{periodoDoDia}">
 						<option value="">Selecione...</option>
@@ -37,27 +37,27 @@
 					</select>
 					<div class="invalid-feedback">Escolha um período válido.</div>
 				</div>
-				<div class="mb-3 col-7" style="display: inline-block;">
+				<div class="col-7" style="display: inline-block;">
 					<label class="form-label">Cidade</label>
 					<input class="form-control" th:errorclass="is-invalid" type="text" th:field="*{cidade}">
 					<div class="invalid-feedback" th:errors="*{cidade}"></div>
 				</div>
-				<div class="mb-3 col-2" style="display: inline-block;">
+				<div class="col-2" style="display: inline-block;">
 					<label class="form-label">Estado</label>
 					<input class="form-control" th:errorclass="is-invalid" type="text" th:field="*{estado}">
 					<div class="invalid-feedback" th:errors="*{estado}"></div>
 				</div>
-				<div class="mb-3" style="display: inline-block;">
+				<div style="display: inline-block;">
 					<label class="form-label">Sigla</label>
 					<input class="form-control" th:errorclass="is-invalid" type="text" th:field="*{siglaEstado}">
 					<div class="invalid-feedback" th:errors="*{siglaEstado}"></div>
 				</div>
-				<div class="mb-3" style="display: inline-block;">
+				<div style="display: inline-block;">
 					<label class="form-label">País</label>
 					<input class="form-control" th:errorclass="is-invalid" type="text" th:id="pais" th:name="pais" th:value="EUA">
 					<div class="invalid-feedback" th:errors="*{pais}"></div>
 				</div>
-				<div class="mb-3" style="display: inline-block;">
+				<div style="display: inline-block;">
 					<label class="form-label">Gráfica</label>
 					<input class="form-control" th:errorclass="is-invalid" type="text" th:field="*{grafica}">
 					<div class="invalid-feedback" th:errors="*{grafica}"></div>
@@ -65,7 +65,7 @@
 			</div>
 			
 			<a type="button" class="btn btn-primary" th:href="${href}">Voltar</a>
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="submit" class="btn btn-primary">Salvar</button>
 		</form>
 	</div>
 	<br>

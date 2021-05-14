@@ -4,30 +4,28 @@
 	<body>
 		<header th:replace="~{fragmentos :: header('Mensagem #' + ${mensagem.id})}"></header>
 		
-		<main>
-			<div class="container mt-4">
-				<div class="row">
-					<div class="col-12">
-						<strong>Título português:</strong> <span th:text="${mensagem.tituloBr}"></span><br>
-						<strong>Título inglês:</strong> <span th:text="${mensagem.tituloEn}"></span><br>
-						<strong>Data da pregação:</strong> <span th:text="${mensagem.dataPregacao}"></span><br>
-						<strong>Cidade:</strong> <span th:text="${mensagem.cidade}"></span><br>
-						<strong>Estado:</strong> <span th:text="${mensagem.estado}"></span><br>
-						<strong>Sigla do estado:</strong> <span th:text="${mensagem.siglaEstado}"></span><br>
-						<strong>País:</strong> <span th:text="${mensagem.pais}"></span><br>
-						<strong>Gráfica:</strong> <span th:text="${mensagem.grafica}"></span><br>
-						<strong>Dia da semana:</strong> <span th:text="${mensagem.diaDaSemana.toString()}"></span><br>
-						<strong>Período do dia:</strong> <span th:text="${mensagem.periodoDoDia.toString()}"></span><br><br>
-					</div>
-				</div>
-				<div class="row">
-					<div style="display: inline-block;">
-						<a type="button" class="btn btn-primary" href="/mensagens">Voltar</a> 
-						<a type="button" class="btn btn-primary" th:href="@{/mensagens/{mensagemId}/edit(mensagemId = ${mensagem.id})}">Editar</a>
-						<a th:styleappend="${param.novo == null ? 'display: none;' : ''}" type="button" class="btn btn-secondary" style="margin-left: 25px;" href="/mensagens/new">Nova Mensagem</a>
-					</div>
+		<div class="container mt-4">
+			<div class="row">
+				<div class="col-12">
+					<strong>Título português:</strong> <span th:text="${mensagem.tituloBr}"></span><br>
+					<strong>Título inglês:</strong> <span th:text="${mensagem.tituloEn}"></span><br>
+					<strong>Data da pregação:</strong> <span th:text="${mensagem.dataPregacao}"></span><br>
+					<strong>Cidade:</strong> <span th:text="${mensagem.cidade}"></span><br>
+					<strong>Estado:</strong> <span th:text="${mensagem.estado}"></span><br>
+					<strong>Sigla do estado:</strong> <span th:text="${mensagem.siglaEstado}"></span><br>
+					<strong>País:</strong> <span th:text="${mensagem.pais}"></span><br>
+					<strong>Gráfica:</strong> <span th:text="${mensagem.grafica}"></span><br>
+					<strong>Dia da semana:</strong> <span th:text="${mensagem.diaDaSemana.toString()}"></span><br>
+					<strong>Período do dia:</strong> <span th:text="${mensagem.periodoDoDia.toString()}"></span><br><br>
 				</div>
 			</div>
-		</main>
+			<div class="row">
+				<div style="display: inline-block;">
+					<a type="button" class="btn btn-primary" href="/mensagens">Voltar</a> 
+					<a type="button" class="btn btn-primary" th:href="@{/mensagens/{mensagemId}/edit(mensagemId = ${mensagem.id})}">Editar</a>
+					<a th:styleappend="${param.novo == null ? 'display: none;' : ''}" type="button" class="btn btn-secondary" style="margin-left: 25px;" href="/mensagens/new">Nova Mensagem</a>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

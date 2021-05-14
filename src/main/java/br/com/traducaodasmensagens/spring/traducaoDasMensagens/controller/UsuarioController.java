@@ -1,6 +1,7 @@
 package br.com.traducaodasmensagens.spring.traducaoDasMensagens.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.traducaodasmensagens.spring.traducaoDasMensagens.dto.RequisicaoFormUsuario;
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.Usuario;
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.repository.UsuarioRepository;
 
@@ -30,19 +32,39 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/new")
-	public ModelAndView nnew() {
+	public ModelAndView nnew(RequisicaoFormUsuario requisicao) {
 		ModelAndView mv = new ModelAndView("usuarios/novo");
 		
 		return mv;
 	}
 	
 	@PostMapping("")
-	public ModelAndView create() {
-		return null;
+	public ModelAndView create(RequisicaoFormUsuario requisicao) {
+		Usuario usuario = requisicao.toUsuario();
+		usuario.setConfirmado(true);
+		usuario.setAtivo(true);
+		usuarioRepository.save(usuario);
+		
+		ModelAndView mv = new ModelAndView("redirect:/usuarios/" + usuario.getId());
+		mv.addObject("novo", true);
+		
+		return mv;
 	}
 	
 	@GetMapping("/{id}")
 	public ModelAndView show(@PathVariable Integer id) {
+		Optional<Usuario> optional = usuarioRepository.findById(id);
+		
+		if(optional.isPresent()) {
+			Usuario usuario = optional.get();
+			ModelAndView mv = new ModelAndView("usuarios/show");
+			mv.addObject("usuario", usuario);
+			
+			return mv;
+		}else {
+			
+		}
+		
 		return null;
 	}
 	

@@ -17,9 +17,9 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(nullable = false)
-	private String nome;
+	private String nomeUsuario;
 	@Column(nullable = false, unique = true)
-	private String login;
+	private String email;
 	@Column(nullable = false)
 	private String senha;
 	@Column(nullable = false, columnDefinition = "boolean default false")
@@ -38,11 +38,11 @@ public class Usuario {
 	@Deprecated
 	public Usuario() {}
 
-	public Usuario(String nome, String login, String senha, Boolean confirmado, Boolean ativo, String ultima_mensagem,
+	public Usuario(String nomeUsuario, String email, String senha, Boolean confirmado, Boolean ativo, String ultima_mensagem,
 			String ultimo_paragrafo) {
 		super();
-		this.nome = nome;
-		this.login = login;
+		this.nomeUsuario = nomeUsuario;
+		this.email = email;
 		this.senha = senha;
 		this.confirmado = confirmado;
 		this.ativo = ativo;
@@ -54,20 +54,20 @@ public class Usuario {
 		return id;
 	}
 	
-	public String getNome() {
-		return nome;
+	public String getNomeUsuario() {
+		return nomeUsuario;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
 	}
 
-	public String getLogin() {
-		return login;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getSenha() {
@@ -120,7 +120,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha + ", confirmado="
+		return "Usuario [id=" + id + ", nomeUsuario=" + nomeUsuario + ", email=" + email + ", senha=" + senha + ", confirmado="
 				+ confirmado + ", ativo=" + ativo + ", ultima_mensagem=" + ultima_mensagem + ", ultimo_paragrafo="
 				+ ultimo_paragrafo + "]";
 	}

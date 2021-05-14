@@ -16,8 +16,8 @@
 						    <tr>
 							    <th scope="col">#</th>
 							    <th scope="col"><a href="" title="Ordenar" style="color: inherit; text-decoration: none">Id <i class="fa fa-sort" aria-hidden="true"></i></a></th>
-							    <th scope="col"><a href="" title="Ordenar" style="color: inherit; text-decoration: none">Login <i class="fa fa-sort" aria-hidden="true"></i></a></th>
-							    <th scope="col"><a href="" title="Ordenar" style="color: inherit; text-decoration: none">Nome <i class="fa fa-sort" aria-hidden="true"></i></a></th>
+							    <th scope="col"><a href="" title="Ordenar" style="color: inherit; text-decoration: none">Email <i class="fa fa-sort" aria-hidden="true"></i></a></th>
+							    <th scope="col"><a href="" title="Ordenar" style="color: inherit; text-decoration: none">Nome de usuário <i class="fa fa-sort" aria-hidden="true"></i></a></th>
 							    <th scope="col"></th>
 							    <th scope="col"></th>
 							    <th scope="col"></th>
@@ -27,8 +27,8 @@
 						    <tr th:each="usuario : ${usuarios}">
 							    <th scope="row">1</th>
 							    <td th:text="${usuario.id}"></td> 
-							    <td class="col-3" th:text="${usuario.login}"></td>
-							    <td class="col-5" th:text="${usuario.nome}"></td>
+							    <td class="col-3" th:text="${usuario.email}"></td>
+							    <td class="col-5" th:text="${usuario.nomeUsuario}"></td>
 							    <td><a th:href="@{/usuarios/{usuarioId}(usuarioId = ${usuario.id})}">Detalhes</a></td>
 							    <td><a th:href="@{/usuarios/{usuarioId}/edit(usuarioId = ${usuario.id})}">Editar</a></td>
 							    <td>

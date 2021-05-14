@@ -1,0 +1,25 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{fragmentos :: headGeral('Detalhes')}"></head>
+	<body>
+		<header th:replace="~{fragmentos :: header('Usuário #' + ${usuario.id})}"></header>
+		
+		<div class="container mt-4">
+			<div class="row">
+				<div class="col-12">
+					<strong>Nome de usuário:</strong> <span th:text="${usuario.nomeUsuario}"></span><br>
+					<strong>Email:</strong> <span th:text="${usuario.email}"></span><br>
+					<strong>Confirmado:</strong> <span th:text="${usuario.confirmado}"></span><br>
+					<strong>Ativo:</strong> <span th:text="${usuario.ativo}"></span><br><br>
+				</div>
+			</div>
+			<div class="row">
+				<div style="display: inline-block;">
+					<a type="button" class="btn btn-primary" href="/usuarios">Voltar</a> 
+					<a type="button" class="btn btn-primary" th:href="@{/usuarios/{usuarioId}/edit(usuarioId = ${usuario.id})}">Editar</a>
+					<a th:styleappend="${param.novo == null ? 'display: none;' : ''}" type="button" class="btn btn-secondary" style="margin-left: 25px;" href="/usuarios/new">Novo usuário</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
