@@ -47,10 +47,12 @@ public class RequisicaoFormUsuario {
 		return usuario;
 	}
 	
-	public Usuario toUsuario(Usuario usuario) {
+	public Usuario toUsuario(Usuario usuario, String senha) {
 		usuario.setNomeUsuario(this.nomeUsuario);
 		usuario.setEmail(this.email);
-		usuario.setSenha(this.senha);
+		if(this.senha != "") {
+			usuario.setSenha(this.senha);
+		}
 		
 		return usuario;
 	}
