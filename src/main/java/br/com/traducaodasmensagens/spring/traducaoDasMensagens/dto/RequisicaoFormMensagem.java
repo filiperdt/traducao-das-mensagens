@@ -16,7 +16,7 @@ import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.PeriodoDoDia;
 public class RequisicaoFormMensagem {
 	@NotBlank
 	@NotNull
-	private String tituloBr; // Em caso de erro, NotBlank.requisicaoNovaMensagem.tituloBr   > Utiliza-lo em resources/messages.properties
+	private String tituloBr; // Em caso de erro, NotBlank.requisicaoFormMensagem.tituloBr   > Utiliza-lo em resources/messages.properties
 	@NotBlank
 	@NotNull
 	private String tituloEn;
@@ -155,7 +155,7 @@ public class RequisicaoFormMensagem {
 	
 	@Override
 	public String toString() {
-		return "RequisicaoNovaMensagem [tituloBr=" + tituloBr + ", tituloEn=" + tituloEn + ", dataPregacao="
+		return "RequisicaoFormMensagem [tituloBr=" + tituloBr + ", tituloEn=" + tituloEn + ", dataPregacao="
 				+ dataPregacao + ", cidade=" + cidade + ", estado=" + estado + ", siglaEstado=" + siglaEstado
 				+ ", pais=" + pais + ", grafica=" + grafica + ", periodoDoDia=" + periodoDoDia + ", diaDaSemana="
 				+ diaDaSemana + "]";

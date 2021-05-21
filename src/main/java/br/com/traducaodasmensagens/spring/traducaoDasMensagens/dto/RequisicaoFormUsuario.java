@@ -1,10 +1,21 @@
 package br.com.traducaodasmensagens.spring.traducaoDasMensagens.dto;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.Usuario;
 
 public class RequisicaoFormUsuario {
-	private String nomeUsuario;
+	@NotBlank
+	@NotNull
+	private String nomeUsuario; // Em caso de erro, NotBlank.requisicaoFormUsuario.nomeUsuario   > Utiliza-lo em resources/messages.properties
+	@NotBlank
+	@NotNull
+	@Email
 	private String email;
+	@NotBlank
+	@NotNull
 	private String senha;
 	
 	@Deprecated

@@ -3,8 +3,11 @@ package br.com.traducaodasmensagens.spring.traducaoDasMensagens.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,18 +42,24 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("")
-	public ModelAndView create(RequisicaoFormUsuario requisicao) {
-		Usuario usuario = requisicao.toUsuario();
-		usuario.setConfirmado(true);
-		usuario.setAtivo(true);
-		usuario.setUltima_mensagem("Última Mensagem");
-		usuario.setUltimo_paragrafo("Último parágrafo");
-		usuarioRepository.save(usuario);
-		
-		ModelAndView mv = new ModelAndView("redirect:/usuarios/" + usuario.getId());
-		mv.addObject("novo", true);
-		
-		return mv;
+	public ModelAndView create(@Valid RequisicaoFormUsuario requisicao, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			ModelAndView mv = new ModelAndView("usuarios/novo");
+			
+			return mv;
+		}else {
+			Usuario usuario = requisicao.toUsuario();
+			usuario.setConfirmado(true);
+			usuario.setAtivo(true);
+			usuario.setUltima_mensagem("Última Mensagem");
+			usuario.setUltimo_paragrafo("Último parágrafo");
+			usuarioRepository.save(usuario);
+			
+			ModelAndView mv = new ModelAndView("redirect:/usuarios/" + usuario.getId());
+			mv.addObject("novo", true);
+			
+			return mv;
+		}
 	}
 	
 	@GetMapping("/{id}")
@@ -87,7 +96,6 @@ public class UsuarioController {
 	
 	@PostMapping("/{id}")
 	public ModelAndView update(@PathVariable Integer id, RequisicaoFormUsuario requisicao) {
-		
 		Optional<Usuario> optional = usuarioRepository.findById(id);
 		
 		if(optional.isPresent()) {
@@ -100,7 +108,7 @@ public class UsuarioController {
 			
 			return new ModelAndView("redirect:/usuarios/" + usuarioRequisicao.getId());
 		} else {
-			return new ModelAndView("redirect:/mensagens");
+			return new ModelAndView("redirect:/usuarios");
 		}
 	}
 	

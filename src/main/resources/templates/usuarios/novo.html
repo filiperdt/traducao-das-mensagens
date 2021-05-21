@@ -10,15 +10,18 @@
 					<div class="mb-3">
 						<div class="col-4" style="display: inline-block;">
 							<label class="form-label">Nome de usuário</label>
-							<input type="text" class="form-control" th:id="nomeUsuario" th:name="nomeUsuario" th:value="usuario">
+							<input type="text" class="form-control" th:errorclass="is-invalid" th:field="*{nomeUsuario}">
+							<div class="invalid-feedback" th:errors="*{nomeUsuario}"></div>
 						</div>
 						<div class="col-4" style="display: inline-block;">
 							<label class="form-label">Email</label>
-							<input type="email" class="form-control" th:id="email" th:name="email" th:value="${#dates.format(#dates.createNow() , 'yyyy/MMM/dd_HH-mm-ss')} + '@gmail.com'" autocomplete="off">
+							<input type="email" class="form-control" th:errorclass="is-invalid" th:field="*{email}" autocomplete="off">
+							<div class="invalid-feedback" th:errors="*{email}"></div>
 						</div>
 						<div class="col-3" style="display: inline-block;">
 							<label class="form-label">Senha</label>
-							<input type="password" class="form-control" th:id="senha" th:name="senha" th:value="abc" autocomplete="off">
+							<input type="password" class="form-control" th:errorclass="is-invalid" th:field="*{senha}" autocomplete="off">
+							<div class="invalid-feedback" th:errors="*{senha}"></div>
 						</div>
 					</div>
 					<a type="button" class="btn btn-primary" href="javascript:history.back()">Voltar</a>

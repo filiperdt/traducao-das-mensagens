@@ -34,12 +34,21 @@ public class MensagemController {
 		return mv;
 	}
 	
+	@GetMapping("/new")
+	public ModelAndView nnew(RequisicaoFormMensagem requisicao) {
+		ModelAndView mv = new ModelAndView("mensagens/novo");
+		mv.addObject("diasDaSemana", DiaDaSemana.values());
+		mv.addObject("periodosDoDia", PeriodoDoDia.values());
+		return mv;
+	}
+	
 	@PostMapping("")
 	public ModelAndView create(@Valid RequisicaoFormMensagem requisicao, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			ModelAndView mv = new ModelAndView("mensagens/novo");
 			mv.addObject("diasDaSemana", DiaDaSemana.values());
 			mv.addObject("periodosDoDia", PeriodoDoDia.values());
+			
 			return mv;
 		} else {
 			Mensagem mensagem = requisicao.toMensagem();
@@ -50,14 +59,6 @@ public class MensagemController {
 			
 			return mv;
 		}
-	}
-	
-	@GetMapping("/new")
-	public ModelAndView nnew(RequisicaoFormMensagem requisicao) {
-		ModelAndView mv = new ModelAndView("mensagens/novo");
-		mv.addObject("diasDaSemana", DiaDaSemana.values());
-		mv.addObject("periodosDoDia", PeriodoDoDia.values());
-		return mv;
 	}
 	
 	@GetMapping("/{id}")
