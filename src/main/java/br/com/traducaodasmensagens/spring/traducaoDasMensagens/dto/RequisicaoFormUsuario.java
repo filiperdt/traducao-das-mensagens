@@ -4,6 +4,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.com.traducaodasmensagens.spring.traducaoDasMensagens.interfaces.VerificacaoNovoUsuario;
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.Usuario;
 
 public class RequisicaoFormUsuario {
@@ -14,8 +15,8 @@ public class RequisicaoFormUsuario {
 	@NotNull
 	@Email
 	private String email;
-	@NotBlank
-	@NotNull
+	@NotBlank(groups= {VerificacaoNovoUsuario.class})
+	@NotNull(groups= {VerificacaoNovoUsuario.class})
 	private String senha;
 	
 	@Deprecated

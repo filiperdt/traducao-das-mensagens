@@ -1,0 +1,221 @@
+[33mcommit dbb61f68f0566fd5687d5d7b765db4649382a173[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Fri May 21 19:31:44 2021 -0300
+
+    Adicionadas mensagens de erro para preenchimento incorreto de Usuário
+
+[33mcommit 3d5e16fad32ae611d06a9484e01d1d0420a185ea[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Mon May 17 18:51:34 2021 -0300
+
+    Editado método delete
+
+[33mcommit 2a635ddb299c4e1ef49c09df8e8554a0321ce89a[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Mon May 17 18:46:45 2021 -0300
+
+    Editado método update
+
+[33mcommit 0205649eef37e0a491acef4d7a5740a4a6eae10a[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Fri May 14 17:08:09 2021 -0300
+
+    Editados métodos create e show do UsuarioController, e alterados nomes de atributos de Usuário
+
+[33mcommit ce671d87954f496dc383bd4a94ff267938d5709e[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Wed May 12 15:03:04 2021 -0300
+
+    Editadas as páginas de Login e de Listagem de Usuários
+
+[33mcommit a077a72e837102caaba9e7b879596b38f571d49c[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Tue May 4 18:41:52 2021 -0300
+
+    Mensagens de erro criadas para Mensagem
+
+[33mcommit 9a4a9ed6cd50e29d3c20ced523575516eddcc29a[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Mon May 3 14:27:41 2021 -0300
+
+    Função Deletar Mensagem concluída
+
+[33mcommit 9d820519013ccb01f0c79410f152900b1546d1f0[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Tue Apr 27 17:57:29 2021 -0300
+
+    Criado fragmento para o formulário da Mensagem
+
+[33mcommit bab731245d7b18ce7649dd8105cf7ba5df021db6[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Tue Apr 27 17:12:29 2021 -0300
+
+    Criada a função de atualização
+
+[33mcommit 522abaecc8c8f4dc39040ae939f4c249720ebda6[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Mon Apr 26 15:02:14 2021 -0300
+
+    Criada a página de detalhes
+
+[33mcommit 86d93437e1c0f572ee05223d00da1ba1fc66467e[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Sat Apr 24 15:41:11 2021 -0300
+
+    Criados fragmentos, e alteradas as rotas para index e home.
+
+[33mcommit 5e5c698176a07cd149aa9fe6a2998e3669aa3c14[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Fri Apr 23 13:17:18 2021 -0300
+
+    Foram personalizadas mensagens de erro na validação de campos.
+
+[33mcommit 698bb8c96a5de72fcc70c2aa71df1ab299572e37[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Fri Apr 23 09:44:53 2021 -0300
+
+    Adição de 'th field', validação de campos, e mensagens de erro na validação de campos.
+
+[33mcommit 9d21e0a58184f267b51ef11545595bbf688a3bf8[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Mon Apr 19 12:15:56 2021 -0300
+
+    Correção na exibição de enum
+
+[33mcommit 6517a144b183919063cfeb9fa20d81b2224e1347[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Mon Apr 12 16:22:18 2021 -0300
+
+    Dependência Validation inserida
+
+[33mcommit 21214657ac04691627a1c651169d5539ca0a45b5[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Mon Apr 12 15:41:48 2021 -0300
+
+    Repositórios criados, criada a página de Nova Mensagem, concluído o Create da Mensagem no bd, e criado o DTO de Mensagem
+
+[33mcommit 7c5e27cacfeb9d9a96219b2c5e3f61ca79752c79[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Sun Mar 21 00:16:04 2021 -0300
+
+    Adicionada rota na MensagemController. Criada a página 'Lista de Mensagens'
+
+[33mcommit 32c95d2da357eea834145b220765d62ed06ffdec[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Fri Mar 19 13:48:02 2021 -0300
+
+    Criados MensagemController e index
+
+[33mcommit fb52c3f01d9c0208e788cd175818efc758256362[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Thu Mar 18 17:04:24 2021 -0300
+
+    Spring Data completo
+
+[33mcommit 0cc7ba5fe312eda50d9872bc5df8a3f159c713ba[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Thu Mar 11 18:12:57 2021 -0300
+
+    Comentário alterado
+
+[33mcommit d4845a750155c4f9a6efe94e2830e3a102cff9b7[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Mon Mar 1 21:46:00 2021 -0300
+
+    Comentário alterado
+
+[33mcommit 4b006423c99852def0084ce8f4c26fd432d617ac[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Mon Mar 1 21:16:56 2021 -0300
+
+    Alteração no controller
+
+[33mcommit 4d1065c5b6a175fe43cec2d11caf32b545eae459[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Tue Feb 2 14:43:59 2021 -0300
+
+    Dependências DevTools e Thymeleaf inseridas
+
+[33mcommit a799693248bb1e40284813c0959d9d96233ff80b[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Tue Feb 2 13:59:00 2021 -0300
+
+    Classe Usuario criada
+
+[33mcommit dc15b213a94ee44f126fc36d576ed5a3030d92f2[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Mon Feb 1 16:16:08 2021 -0300
+
+    Criado o relacionamento entre Mensagem e Paragrafo
+
+[33mcommit 6bca1f6940801f01637cfdfc6deea7ce1c60d05d[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Wed Jan 27 23:23:40 2021 -0300
+
+    Criado o service para Mensagem
+
+[33mcommit a18515dc938f9ae1a2e2ef2143b5d75e45c470ae[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Wed Jan 27 21:29:30 2021 -0300
+
+    Primeira Mensagem inserida
+
+[33mcommit 359da167142603bcbca89b802e08c07bb85da59d[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Tue Jan 26 16:53:40 2021 -0300
+
+    Criado MensagemRepository
+
+[33mcommit dda2e494e41dad4e70170bb894f793dc81afaa54[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Tue Jan 26 16:02:01 2021 -0300
+
+    CrudRepository não encontrado
+
+[33mcommit a3e08ecc2d195e13505157eb27fe609ba39bf13c[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Tue Jan 26 00:34:42 2021 -0300
+
+    Schema selecionado, e classe Mensagem criada
+
+[33mcommit 742fc263aea85cf7211064156ea2c9a0c7d37e17[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Mon Jan 25 19:13:53 2021 -0300
+
+    Dependência PostgreSQL Driver inserida
+
+[33mcommit 5d08fceae6b514d80d3db848d7955e18ac55cfdd[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Mon Jan 25 19:07:34 2021 -0300
+
+    application.properties preenchido
+
+[33mcommit 489959bc56d0c8bf280d1bbcfe0e4cc7f7c40fdd[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Mon Jan 25 18:42:44 2021 -0300
+
+    Dependência Spring Data JPA inserida
+
+[33mcommit 2d12af1ccb89d6aa343e93fb121395db84cedaa4[m
+Author: Filipe Rdt <rubenfilipeao@gmail.com>
+Date:   Sat Jan 23 19:00:02 2021 +0000
+
+    Update README.md
+
+[33mcommit 5182530a1295dcee4d872436e51a7e67f8fdc1f8[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Sat Jan 23 16:53:34 2021 -0200
+
+    Commit inicial 2
+
+[33mcommit f60bb09eca68de1915f5f00b762ed2c9dcc61abe[m
+Author: filiperdt <rubenfilipeao@gmail.com>
+Date:   Sat Jan 23 16:40:23 2021 -0200
+
+    Comentário alterado
+
+[33mcommit 70f5ce34cf0e1de1df8bbd3f53e0bee1691d001e[m
+Author: Filipe Rdt <rubenfilipeao@gmail.com>
+Date:   Sat Jan 23 15:36:55 2021 +0000
+
+    Initial commit

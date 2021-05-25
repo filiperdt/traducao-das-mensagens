@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.dto.RequisicaoFormUsuario;
+import br.com.traducaodasmensagens.spring.traducaoDasMensagens.interfaces.VerificacaoNovoUsuario;
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.Usuario;
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.repository.UsuarioRepository;
 
@@ -42,7 +44,7 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("")
-	public ModelAndView create(@Valid RequisicaoFormUsuario requisicao, BindingResult bindingResult) {
+	public ModelAndView create(@Validated(VerificacaoNovoUsuario.class) RequisicaoFormUsuario requisicao, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			ModelAndView mv = new ModelAndView("usuarios/novo");
 			
@@ -95,20 +97,27 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/{id}")
-	public ModelAndView update(@PathVariable Integer id, RequisicaoFormUsuario requisicao) {
-		Optional<Usuario> optional = usuarioRepository.findById(id);
-		
-		if(optional.isPresent()) {
-			Usuario usuarioRequisicao = requisicao.toUsuario(optional.get(), optional.get().getSenha());
-			usuarioRequisicao.setConfirmado(true);
-			usuarioRequisicao.setAtivo(true);
-			usuarioRequisicao.setUltima_mensagem("Última Mensagem");
-			usuarioRequisicao.setUltimo_paragrafo("Último parágrafo");
-			usuarioRepository.save(usuarioRequisicao);
+	public ModelAndView update(@PathVariable Integer id, @Valid RequisicaoFormUsuario requisicao, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			ModelAndView mv = new ModelAndView("usuarios/edit");
+			mv.addObject("usuarioId", id);
 			
-			return new ModelAndView("redirect:/usuarios/" + usuarioRequisicao.getId());
-		} else {
-			return new ModelAndView("redirect:/usuarios");
+			return mv;
+		}else {
+			Optional<Usuario> optional = usuarioRepository.findById(id);
+			
+			if(optional.isPresent()) {
+				Usuario usuarioRequisicao = requisicao.toUsuario(optional.get(), optional.get().getSenha());
+				usuarioRequisicao.setConfirmado(true);
+				usuarioRequisicao.setAtivo(true);
+				usuarioRequisicao.setUltima_mensagem("Última Mensagem");
+				usuarioRequisicao.setUltimo_paragrafo("Último parágrafo");
+				usuarioRepository.save(usuarioRequisicao);
+				
+				return new ModelAndView("redirect:/usuarios/" + usuarioRequisicao.getId());
+			} else {
+				return new ModelAndView("redirect:/usuarios");
+			}
 		}
 	}
 	

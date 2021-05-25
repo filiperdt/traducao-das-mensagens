@@ -10,15 +10,18 @@
 					<div class="mb-3">
 						<div class="col-4" style="display: inline-block;">
 							<label class="form-label">Nome de usuário</label>
-							<input type="text" class="form-control" th:field="*{nomeUsuario}">
+							<input type="text" class="form-control" th:errorclass="is-invalid" th:field="*{nomeUsuario}">
+							<div class="invalid-feedback" th:errors="*{nomeUsuario}"></div>
 						</div>
 						<div class="col-4" style="display: inline-block;">
 							<label class="form-label">Email</label>
-							<input type="email" class="form-control" th:field="*{email}">
+							<input type="email" class="form-control" th:errorclass="is-invalid" th:field="*{email}">
+							<div class="invalid-feedback" th:errors="*{email}"></div>
 						</div>
 						<div class="col-4 mt-3">
 							<label class="form-label">Senha (<strong><em>Para manter a atual, deixe vazio</em></strong>)</label>
-							<input type="password" class="form-control" th:field="*{senha}" placeholder="Mantenha a senha atual">
+							<input type="password" class="form-control" th:errorclass="is-invalid" th:field="*{senha}" placeholder="Mantenha a senha atual">
+							<div class="invalid-feedback" th:errors="*{senha}"></div>
 						</div>
 					</div>
 					<a type="button" class="btn btn-primary" href="javascript:history.back()">Voltar</a>
