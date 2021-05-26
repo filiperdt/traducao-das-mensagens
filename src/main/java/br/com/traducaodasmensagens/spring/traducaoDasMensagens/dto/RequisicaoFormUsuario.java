@@ -4,16 +4,17 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.com.traducaodasmensagens.spring.traducaoDasMensagens.interfaces.VerificacaoEditarUsuario;
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.interfaces.VerificacaoNovoUsuario;
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.Usuario;
 
 public class RequisicaoFormUsuario {
-	@NotBlank
-	@NotNull
+	@NotBlank(groups= {VerificacaoEditarUsuario.class})
+	@NotNull(groups= {VerificacaoEditarUsuario.class})
 	private String nomeUsuario; // Em caso de erro, NotBlank.requisicaoFormUsuario.nomeUsuario   > Utiliza-lo em resources/messages.properties
-	@NotBlank
-	@NotNull
-	@Email
+	@NotBlank(groups= {VerificacaoEditarUsuario.class})
+	@NotNull(groups= {VerificacaoEditarUsuario.class})
+	@Email(groups= {VerificacaoEditarUsuario.class})
 	private String email;
 	@NotBlank(groups= {VerificacaoNovoUsuario.class})
 	@NotNull(groups= {VerificacaoNovoUsuario.class})

@@ -1,5 +1,5 @@
 package br.com.traducaodasmensagens.spring.traducaoDasMensagens.interfaces;
 
-public interface VerificacaoNovoUsuario extends VerificacaoEditarUsuario {
+public interface VerificacaoEditarUsuario {
 
 }

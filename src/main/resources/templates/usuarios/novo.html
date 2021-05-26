@@ -3,32 +3,7 @@
 	<head th:replace="~{fragmentos :: headGeral('Novo Usuário')}"></head>
 	<body>
 		<header th:replace="~{fragmentos :: header('Novo Usuário')}"></header>
-		
-		<div class="container">
-			<div class="row">
-				<form  th:object="${requisicaoFormUsuario}" th:action="@{/usuarios}" method="POST" autocomplete="off">
-					<div class="mb-3">
-						<div class="col-4" style="display: inline-block;">
-							<label class="form-label">Nome de usuário</label>
-							<input type="text" class="form-control" th:errorclass="is-invalid" th:field="*{nomeUsuario}">
-							<div class="invalid-feedback" th:errors="*{nomeUsuario}"></div>
-						</div>
-						<div class="col-4" style="display: inline-block;">
-							<label class="form-label">Email</label>
-							<input type="email" class="form-control" th:errorclass="is-invalid" th:field="*{email}" autocomplete="off">
-							<div class="invalid-feedback" th:errors="*{email}"></div>
-						</div>
-						<div class="col-3" style="display: inline-block;">
-							<label class="form-label">Senha</label>
-							<input type="password" class="form-control" th:errorclass="is-invalid" th:field="*{senha}" autocomplete="off">
-							<div class="invalid-feedback" th:errors="*{senha}"></div>
-						</div>
-					</div>
-					<a type="button" class="btn btn-primary" href="javascript:history.back()">Voltar</a>
-					<button type="submit" class="btn btn-primary">Salvar</button>
-				</form>
-			</div>
-		</div>
+		<div th:replace="~{/usuarios/fragmentosUsuario :: formUsuario(requisicaoFormUsuario, '/usuarios', 'off', 'off', 'col-3', 'display: inline-block;', '', '')}"></div>
 		
 		<!-- Option 1: Bootstrap Bundle with Popper -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>		

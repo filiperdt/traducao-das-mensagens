@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<div th:fragment="formUsuario(requisicaoFormUsuario, action, autocompleteEmail, autocompleteSenha, class, style, text, placeholder)" class="container">
+		<div class="row">
+			<form  th:object="${requisicaoFormUsuario}" th:action="${action}" method="POST">
+				<div class="mb-3">
+					<div class="col-4" style="display: inline-block;">
+						<label class="form-label">Nome de usuário</label>
+						<input type="text" class="form-control" th:errorclass="is-invalid" th:field="*{nomeUsuario}">
+						<div class="invalid-feedback" th:errors="*{nomeUsuario}"></div>
+					</div>
+					<div class="col-4" style="display: inline-block;">
+						<label class="form-label">Email</label>
+						<input type="email" class="form-control" th:errorclass="is-invalid" th:field="*{email}" th:autocomplete="${autocompleteEmail}">
+						<div class="invalid-feedback" th:errors="*{email}"></div>
+					</div>
+					<div th:classappend="${class}" th:styleappend="${style}">
+						<label class="form-label">Senha<strong><em><span th:text="${text}"></span></em></strong></label>
+						<input type="password" class="form-control" th:errorclass="is-invalid" th:field="*{senha}" th:autocomplete="${autocompleteSenha}" th:placeholder="${placeholder}">
+						<div class="invalid-feedback" th:errors="*{senha}"></div>
+					</div>
+				</div>
+				<a type="button" class="btn btn-primary" href="javascript:history.back()">Voltar</a>
+				<button type="submit" class="btn btn-primary">Salvar</button>
+			</form>
+		</div>
+	</div>
+</html>

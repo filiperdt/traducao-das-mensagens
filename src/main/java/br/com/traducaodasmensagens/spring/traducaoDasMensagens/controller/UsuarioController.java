@@ -3,8 +3,6 @@ package br.com.traducaodasmensagens.spring.traducaoDasMensagens.controller;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.dto.RequisicaoFormUsuario;
+import br.com.traducaodasmensagens.spring.traducaoDasMensagens.interfaces.VerificacaoEditarUsuario;
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.interfaces.VerificacaoNovoUsuario;
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.Usuario;
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.repository.UsuarioRepository;
@@ -97,7 +96,7 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/{id}")
-	public ModelAndView update(@PathVariable Integer id, @Valid RequisicaoFormUsuario requisicao, BindingResult bindingResult) {
+	public ModelAndView update(@PathVariable Integer id, @Validated(VerificacaoEditarUsuario.class) RequisicaoFormUsuario requisicao, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			ModelAndView mv = new ModelAndView("usuarios/edit");
 			mv.addObject("usuarioId", id);
