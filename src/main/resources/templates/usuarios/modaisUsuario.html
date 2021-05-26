@@ -1,0 +1,21 @@
+<div th:fragment="delete" class="modal fade" th:id="staticBackdrop+${usuario.id}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="staticBackdropLabel">Excluir Registro</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<h5>Deseja excluir o usuário #<span th:text="${usuario.id}"></span>?</h5><br>
+				<h7><strong>Nome de usuário:</strong></h7><br>
+				<h7><span th:text="${usuario.nomeUsuario}"></span></h7><br><br>
+				<h7><strong>Email:</strong></h7><br>
+				<h7><span th:text="${usuario.email}"></span></h7>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+				<a th:href="@{/usuarios/{usuarioId}/delete(usuarioId=${usuario.id})}" class="btn btn-danger">Sim</a>
+			</div>
+		</div>
+	</div>
+</div>

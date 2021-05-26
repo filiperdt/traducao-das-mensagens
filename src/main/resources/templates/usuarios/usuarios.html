@@ -32,19 +32,8 @@
 							    <td><a th:href="@{/usuarios/{usuarioId}(usuarioId = ${usuario.id})}">Detalhes</a></td>
 							    <td><a th:href="@{/usuarios/{usuarioId}/edit(usuarioId = ${usuario.id})}">Editar</a></td>
 							    <td>
-									<a th:href="@{/usuarios/{usuarioId}/delete(usuarioId = ${usuario.id})}">Deletar</a>
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									<!-- <a href="#" data-bs-toggle="modal" th:attr="data-bs-target='#staticBackdrop'+${usuario.id}">Deletar</a>
-									<div th:replace="~{usuarios/modaisUsuario :: delete}"></div> -->
+									<a href="#" data-bs-toggle="modal" th:attr="data-bs-target='#staticBackdrop'+${usuario.id}">Deletar</a>
+									<div th:replace="~{usuarios/modaisUsuario :: delete}"></div>
 								</td>
 						    </tr>
 						</tbody>
