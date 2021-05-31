@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.dto.RequisicaoFormUsuario;
@@ -19,7 +19,7 @@ import br.com.traducaodasmensagens.spring.traducaoDasMensagens.interfaces.Verifi
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.Usuario;
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.repository.UsuarioRepository;
 
-@Controller
+@RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
 	@Autowired
@@ -69,12 +69,14 @@ public class UsuarioController {
 		
 		if(optional.isPresent()) {
 			Usuario usuario = optional.get();
+			
 			ModelAndView mv = new ModelAndView("usuarios/show");
 			mv.addObject("usuario", usuario);
 			
 			return mv;
 		}else {
-			return new ModelAndView("redirect:/usuarios");
+			ModelAndView mv = new ModelAndView("redirect:/usuarios");
+			return this.retornaErroMensagem(mv, "Erro na exibição de detalhes. Usuário #" + id + " não encontrado no banco!", true);
 		}
 	}
 	
@@ -91,7 +93,8 @@ public class UsuarioController {
 			
 			return mv;
 		} else {
-			return new ModelAndView("redirect:/usuarios");
+			ModelAndView mv = new ModelAndView("redirect:/usuarios");
+			return this.retornaErroMensagem(mv, "Erro na atualização. Usuário #" + id + " não encontrado no banco!", true);
 		}
 	}
 	
@@ -115,7 +118,8 @@ public class UsuarioController {
 				
 				return new ModelAndView("redirect:/usuarios/" + usuarioRequisicao.getId());
 			} else {
-				return new ModelAndView("redirect:/usuarios");
+				ModelAndView mv = new ModelAndView("redirect:/usuarios");
+				return this.retornaErroMensagem(mv, "Erro na atualização. Usuário #" + id + " não encontrado no banco!", true);
 			}
 		}
 	}
@@ -124,10 +128,20 @@ public class UsuarioController {
 	public ModelAndView delete(@PathVariable Integer id) {
 		Optional<Usuario> optional = usuarioRepository.findById(id);
 		
+		ModelAndView mv = new ModelAndView("redirect:/usuarios");
+		
 		if(optional.isPresent()) {
 			usuarioRepository.deleteById(id);
+			return this.retornaErroMensagem(mv, "Usuário #" + id + " deletado com sucesso!", false);
+		} else {
+			return this.retornaErroMensagem(mv, "Erro na exclusão. Usuário #" + id + " não encontrado no banco!", true);
 		}
+	}
+	
+	private ModelAndView retornaErroMensagem(ModelAndView mv, String msg, boolean result) {
+		mv.addObject("mensagem", msg);
+		mv.addObject("error", result);
 		
-		return new ModelAndView("redirect:/usuarios");
+		return mv;
 	}
 }

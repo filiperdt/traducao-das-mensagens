@@ -4,6 +4,14 @@
 	<body>
 		<header th:replace="~{fragmentos :: header('Listagem de Usuários')}"></header>
 		
+		<div class="container erro-mensagem">
+			<div class="col-12">
+				<span th:styleappend="${param.error == null || param.mensagem == null ? 'display: none' : ''}"
+					  th:classappend="${param.error != null && param.error ? 'erro-mensagem' : 'sucesso-mensagem'}"
+					  th:text="${param.mensagem != null ? param.mensagem : ''}"></span>
+			</div>
+		</div>
+		
 		<div class="container">
 			<div style="display: block; text-align: right;">
 				<a type="button" class="btn btn-primary" href="/usuarios/new">Novo Usuário</a>

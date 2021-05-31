@@ -6,12 +6,12 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.dto.RequisicaoFormMensagem;
@@ -20,7 +20,7 @@ import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.Mensagem;
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.orm.PeriodoDoDia;
 import br.com.traducaodasmensagens.spring.traducaoDasMensagens.repository.MensagemRepository;
 
-@Controller
+@RestController
 @RequestMapping(value="/mensagens")
 public class MensagemController {
 	@Autowired
@@ -29,8 +29,10 @@ public class MensagemController {
 	@GetMapping("")
 	public ModelAndView index() {
 		List<Mensagem> mensagens = this.mensagemRepository.findAll();
+		
 		ModelAndView mv = new ModelAndView("mensagens/mensagens");
 		mv.addObject("mensagens", mensagens);
+		
 		return mv;
 	}
 	
@@ -105,6 +107,7 @@ public class MensagemController {
 			mv.addObject("diasDaSemana", DiaDaSemana.values());
 			mv.addObject("periodosDoDia", PeriodoDoDia.values());
 			mv.addObject("mensagemId", id);
+			
 			return mv;
 		} else {
 			Optional<Mensagem> optional = mensagemRepository.findById(id);
