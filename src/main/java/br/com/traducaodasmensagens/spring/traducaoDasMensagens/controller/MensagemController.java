@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,7 @@ import br.com.traducaodasmensagens.spring.traducaoDasMensagens.repository.Mensag
 
 @RestController /*Arquitetura REST*/
 @RequestMapping(value="/mensagens")
+@CrossOrigin(origins= "http://127.0.0.1:5500")
 public class MensagemController {
 	@Autowired
 	public MensagemRepository mensagemRepository;
@@ -64,7 +66,8 @@ public class MensagemController {
 		}
 	}
 	
-	@PutMapping(value="/{id}", produces="application/json")
+	@PutMapping("/{id}")
+	@ResponseBody
 	public ResponseEntity<?> update(@PathVariable(name = "id") Integer id, @Valid @RequestBody RequisicaoFormMensagem requisicao, BindingResult bindingResult) {
 		Optional<Mensagem> optional = mensagemRepository.findById(id);
 		
@@ -81,7 +84,7 @@ public class MensagemController {
 		}
 	}
 	
-	@DeleteMapping(value="/{id}", produces="application/text")
+	@DeleteMapping("/{id}")
 	@ResponseBody
 	public ResponseEntity<String> delete(@PathVariable(name = "id") Integer id) {
 		Optional<Mensagem> optional = mensagemRepository.findById(id);
@@ -92,5 +95,13 @@ public class MensagemController {
 		} else {
 			return new ResponseEntity<String> ("Erro na exclusão. Mensagem #" + id + " não encontrada no banco!", HttpStatus.NOT_FOUND);
 		}
+	}
+	
+	@GetMapping("/buscaportitulo/{titulo}")
+	@ResponseBody
+	public ResponseEntity<?> buscarPorTitulo(@PathVariable(name="titulo") String titulo){
+		List<Mensagem> mensagens = mensagemRepository.buscarPorTitulo(titulo.trim().toUpperCase());
+		
+		return new ResponseEntity<List<Mensagem>>(mensagens, HttpStatus.OK);
 	}
 }
